@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '../auth/[...nextauth]/authOptions';
-import { openDB } from '../../../lib/database';
+import { openDB } from '../../lib/database';
 
 export async function POST(req: Request) {
   const session = await getServerSession({ req, res: NextResponse }, authOptions);
