@@ -1,14 +1,21 @@
-// app/api/projects/route.ts
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '../../lib/database';
 import Project from '../../models/Project';
 
 // GET-Methode
-export async function GET() {
+export async function GET(req: NextRequest) {
   await connectToDatabase();
 
   try {
-    const projects = await Project.find({});
+    const { searchParams } = new URL(req.url);
+    const limit = parseInt(searchParams.get('limit') || '0', 10); // Standardlimit 0 (keine Begrenzung)
+
+    let query = Project.find({}).sort({ _id: -1 }); // Sortierung in absteigender Reihenfolge nach _id
+    if (limit > 0) {
+      query = query.limit(limit); // Limit anwenden, wenn angegeben
+    }
+
+    const projects = await query.exec();
     return NextResponse.json(projects);
   } catch (error) {
     console.error('Error fetching projects:', error);
@@ -17,7 +24,7 @@ export async function GET() {
 }
 
 // POST-Methode
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const { title, description, image, youtube_link, category } = await request.json();
 
   if (!title || !description || !image || !youtube_link || !category) {

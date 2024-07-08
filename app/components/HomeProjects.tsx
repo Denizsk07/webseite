@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 type Project = {
-  id: number;
+  _id: string;
   title: string;
   description: string;
   image: string;
@@ -25,7 +25,7 @@ export default function HomeProjects() {
       <h2 className="text-3xl font-bold text-center text-white mb-6">Recent Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projects.map((project) => (
-          <div key={project.id} className="bg-gray-700 bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 rounded-lg shadow-lg flex flex-col justify-between">
+          <div key={project._id} className="bg-gray-700 bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 rounded-lg shadow-lg flex flex-col justify-between">
             <div>
               <h3 className="text-lg font-bold mb-2 text-white">{project.title}</h3>
               <p className="text-gray-300 mb-4">{project.description}</p>
