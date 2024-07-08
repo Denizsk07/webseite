@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { openDB } from '../../../lib/database';
+import { openDB } from '../../lib/database';
 
 export async function POST(req: Request) {
   const db = await openDB();
