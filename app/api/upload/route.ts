@@ -1,19 +1,19 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '../../lib/database';
-import ProjectModel, { Project } from '../../models/Project'; // Passe den Pfad an, je nachdem, wo sich das Projektmodell befindet
+import { connectToDatabase } from '@/app/lib/database';
+import Project from '@/app/models/Project';
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   await connectToDatabase(); // Stelle Verbindung zur MongoDB-Datenbank her
 
   try {
-    const body: Project = await req.json();
+    const body = await req.json();
     const { title, description, image, youtube_link, category } = body;
 
     if (!title || !description || !image || !youtube_link || !category) {
       return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
     }
 
-    const project = new ProjectModel({
+    const project = new Project({
       title,
       description,
       image,
