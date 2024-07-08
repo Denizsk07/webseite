@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../auth/[...nextauth]/authOptions';
-import { openDB } from '../../lib/database';
+import { authOptions } from '../auth/[...nextauth]/authOptions'; // Pfade anpassen, wenn nötig
+import { openDB } from '../../lib/database'; // Pfade anpassen, wenn nötig
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const session = await getServerSession(req, res, authOptions);
+  const session = await getServerSession({ req, res }, authOptions);
 
   if (!session) {
     return res.status(401).json({ message: 'Unauthorized' });
