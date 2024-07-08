@@ -54,7 +54,7 @@ export default function Home() {
     Über mich
   </h2>
   <p className="text-neutral-200 text-lg md:text-xl mb-4">
-    Mediengestalter Bild & Ton
+    Mediengestalter Bild & Ton.
   </p>
   <p className="text-neutral-300 text-lg md:text-xl">
     Ich bin Deniz Kaya und wohne in München. Schon seit ich 12 bin,
