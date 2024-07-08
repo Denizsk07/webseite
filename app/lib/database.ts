@@ -10,12 +10,9 @@ export async function connectToDatabase() {
 
   try {
     const uri = 'mongodb+srv://myapp:laszlo761938@cluster0.mz1jkvx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-    const options = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    };
 
-    await mongoose.connect(uri, options);
+    await mongoose.connect(uri);
+    
     isConnected = true;
     console.log('Connected to MongoDB');
   } catch (error) {
