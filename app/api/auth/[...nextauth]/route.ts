@@ -1,8 +1,8 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { openDB } from '../../../lib/database';
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       credentials: {
@@ -13,7 +13,7 @@ export const authOptions = {
         const db = await openDB();
         const user = await db.get('SELECT * FROM users WHERE username = ?', [credentials?.username]);
 
-        if (user && credentials.password === user.password) {  // plain text check for simplicity
+        if (user && credentials?.password === user.password) { // plain text check
           return { id: user.id, name: user.username };
         }
         return null;
@@ -37,12 +37,7 @@ export const authOptions = {
       }
       return session;
     }
-  },
-  pages: {
-    signIn: '/login',
-    signOut: '/',
-    error: '/login',
-  },
+  }
 };
 
 const handler = NextAuth(authOptions);

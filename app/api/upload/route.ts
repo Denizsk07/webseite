@@ -1,26 +1,31 @@
-import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/route'; // Make sure this path is correct
+import { NextApiRequest, NextApiResponse } from 'next';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../auth/[...nextauth]/route';
 import { openDB } from '../../lib/database';
 
-export async function POST(request: Request) {
-  const session = await getServerSession(authOptions);
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const session = await getServerSession(req, res, authOptions);
 
   if (!session) {
-    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
-  }
-
-  const { title, description, image, youtube_link } = await request.json();
-
-  if (!title || !description || !image || !youtube_link) {
-    return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
+    return res.status(401).json({ message: 'Unauthorized' });
   }
 
   const db = await openDB();
-  const result = await db.run(
-    'INSERT INTO projects (title, description, image, youtube_link) VALUES (?, ?, ?, ?)',
-    [title, description, image, youtube_link]
-  );
 
-  return NextResponse.json({ message: 'Project uploaded successfully.', project: { id: result.lastID, title, description, image, youtube_link } });
+  if (req.method === 'POST') {
+    const { title, description, image, youtube_link, category } = req.body;
+
+    if (!title || !description || !image || !youtube_link || !category) {
+      return res.status(400).json({ error: 'All fields are required.' });
+    }
+
+    const result = await db.run(
+      'INSERT INTO projects (title, description, image, youtube_link, category) VALUES (?, ?, ?, ?, ?)',
+      [title, description, image, youtube_link, category]
+    );
+
+    return res.status(201).json({ message: 'Project uploaded successfully.', project: { id: result.lastID, title, description, image, youtube_link, category } });
+  } else {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
 }
