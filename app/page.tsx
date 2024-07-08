@@ -43,23 +43,24 @@ export default function Home() {
       </div>
 
       <section
-        id="about"
-        className="max-w-4xl mx-auto text-center bg-gradient-to-r from-gray-800 via-gray-900 to-black p-8 rounded-lg shadow-2xl my-20 animate-slide-up"
-      >
-        <h2 className="text-3xl md:text-5xl font-bold mb-8 text-teal-400">
-          Über mich
-        </h2>
-        <p className="text-neutral-200 text-lg md:text-xl mb-4">
-          Mediengestalter Bild & Ton
-        </p>
-        <p className="text-neutral-300 text-lg md:text-xl">
-          Ich bin Deniz Kaya und wohne in München. Schon seit ich 12 bin,
-          interessiere ich mich für Mediengestaltung im Bereich Bild & Ton.
-          Deswegen besuche ich derzeit die Macromedia Akademie und mache dort
-          meinen Abschluss als Mediengestalter Bild & Ton. Ich bin immer bereit
-          für jegliche Projekte :)
-        </p>
-      </section>
+  id="about"
+  className="max-w-4xl mx-auto text-center bg-gradient-to-r from-gray-800 via-gray-900 to-black p-8 rounded-xl shadow-2xl my-20 backdrop-filter backdrop-blur-lg bg-opacity-30 border border-gray-700 animate-fadeIn"
+>
+  <h2 className="text-3xl md:text-5xl font-bold mb-8 text-teal-400">
+    Über mich
+  </h2>
+  <p className="text-neutral-200 text-lg md:text-xl mb-4">
+    Mediengestalter Bild & Ton
+  </p>
+  <p className="text-neutral-300 text-lg md:text-xl">
+    Ich bin Deniz Kaya und wohne in München. Schon seit ich 12 bin,
+    interessiere ich mich für Mediengestaltung im Bereich Bild & Ton.
+    Deswegen besuche ich derzeit die Macromedia Akademie und mache dort
+    meinen Abschluss als Mediengestalter Bild & Ton. Ich bin immer bereit
+    für jegliche Projekte :)
+  </p>
+</section>
+
 
       <section id="projects">
         <RecentProjects />
