@@ -3,11 +3,12 @@ import { Spotlight } from "./ui/Spotlight";
 import RecentProjects from "./components/Projects";
 import Banner from "./components/Banner";
 import Footer from "./components/Footer";
-import ContactSection from "./components/Contact";
 import RecentProjects2 from "./components/Projects2";
+import { Link as ScrollLink } from "react-scroll";
 
 import { navItems } from "./data";
 import { FloatingNav } from "./ui/Navigation";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -36,9 +37,11 @@ export default function Home() {
             Hallo! Ich bin Deniz Kaya, ein leidenschaftlicher Mediengestalter im
             Bereich Bild & Ton.
           </p>
+          <Link href="#projects">
           <button className="mt-6 px-8 py-3 bg-teal-400 text-black font-bold rounded-full hover:bg-teal-500 transition-all duration-300 animate-fade-in">
             Meine Projekte ansehen
           </button>
+          </Link>
         </div>
       </div>
 
