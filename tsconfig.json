@@ -28,6 +28,6 @@
     ".next/types/**/*.ts",
     "react-scroll.d.ts",
     "tailwindcss.d.ts"
-, "app/lib/database.ts", "app/lib/create-admin.mjs", "app/api/auth/[...nextauth]", "app/lib/init-db.mjs", "app/lib/database.ts"  ],
+, "app/lib/database.ts", "app/lib/create-admin.ts", "app/api/auth/[...nextauth]", "app/lib/init-db.ts", "app/lib/database.ts"  ],
   "exclude": ["node_modules"]
 }
