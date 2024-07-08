@@ -1,10 +1,9 @@
-import { NextApiRequest } from 'next';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../../auth/[...nextauth]/authOptions';
 import { openDB } from '../../../lib/database';
 
-export async function DELETE(req: NextApiRequest) {
+export async function DELETE(req: NextRequest) {
   const session = await getServerSession(authOptions);
 
   if (!session) {
