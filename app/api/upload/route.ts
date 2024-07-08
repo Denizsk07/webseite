@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../auth/[...nextauth]/authOptions'; // Pfade anpassen, wenn nötig
-import { openDB } from '../../lib/database'; // Pfade anpassen, wenn nötig
+import { authOptions } from '../auth/[...nextauth]/authOptions';
+import { openDB } from '../../lib/database';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getServerSession({ req, res }, authOptions);
 
   if (!session) {
@@ -43,4 +43,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } else {
     return res.status(405).json({ message: 'Method not allowed' });
   }
-}
+};
+
+export default handler;
