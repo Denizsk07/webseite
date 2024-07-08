@@ -1,35 +1,36 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Background } from "./components/Background";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { Background } from './components/Background';
+import SessionWrapper from './SessionWrapper';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Deniz-Kaya.de - Mediengestaltung in Bild und Ton",
-  description: "Erkunden Sie die Welt der Mediengestaltung in Bild und Ton mit Deniz Kaya und seinen Projekten.",
+  title: 'Deniz-Kaya.de - Mediengestaltung in Bild und Ton',
+  description: 'Erkunden Sie die Welt der Mediengestaltung in Bild und Ton mit Deniz Kaya und seinen Projekten.',
   openGraph: {
-    title: "Deniz-Kaya.de - Mediengestaltung in Bild und Ton",
-    description: "Erkunden Sie die Welt der Mediengestaltung in Bild und Ton mit Deniz Kaya und seinen Projekten.",
-    url: "https://deniz-kaya.de",
-    type: "website",
+    title: 'Deniz-Kaya.de - Mediengestaltung in Bild und Ton',
+    description: 'Erkunden Sie die Welt der Mediengestaltung in Bild und Ton mit Deniz Kaya und seinen Projekten.',
+    url: 'https://deniz-kaya.de',
+    type: 'website',
     images: [
       {
-        url: "favicon.ico",
+        url: 'favicon.ico',
         width: 800,
         height: 600,
-        alt: "Deniz Kaya",
+        alt: 'Deniz Kaya',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Deniz-Kaya.de - Mediengestaltung in Bild und Ton",
-    description: "Erkunden Sie die Welt der Mediengestaltung in Bild und Ton mit Deniz Kaya und seinen Projekten.",
+    card: 'summary_large_image',
+    title: 'Deniz-Kaya.de - Mediengestaltung in Bild und Ton',
+    description: 'Erkunden Sie die Welt der Mediengestaltung in Bild und Ton mit Deniz Kaya und seinen Projekten.',
     images: [
       {
-        url: "favicon.ico",
-        alt: "Deniz Kaya",
+        url: 'favicon.ico',
+        alt: 'Deniz Kaya',
       },
     ],
   },
@@ -56,9 +57,11 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} min-h-screen relative`}>
         <Background />
-        <div className="relative z-10 min-h-screen flex flex-col">
-          {children}
-        </div>
+        <SessionWrapper>
+          <div className="relative z-10 min-h-screen flex flex-col">
+            {children}
+          </div>
+        </SessionWrapper>
       </body>
     </html>
   );

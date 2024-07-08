@@ -9,6 +9,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { navItems } from "./data";
 import { FloatingNav } from "./ui/Navigation";
 import Link from "next/link";
+import HomeProjects from "./components/HomeProjects";
 
 export default function Home() {
   return (
@@ -66,8 +67,9 @@ export default function Home() {
 
 
       <section id="projects">
-        <RecentProjects />
-        <RecentProjects2 />
+
+        <HomeProjects />
+
       </section>
 
       <Banner />
