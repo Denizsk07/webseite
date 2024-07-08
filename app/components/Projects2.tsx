@@ -1,17 +1,13 @@
 "use client";
 
 import { FaLocationArrow } from "react-icons/fa6";
-import { projects } from "../data";
+import { projects } from "../data2";
 import { PinContainer } from "../ui/Pin";
 import Link from "next/link";
 
-const RecentProjects = () => {
+const RecentProjects2 = () => {
   return (
-    <div className="py-20 mt-20">
-      <h1 className="heading text-white text-center">
-        Eine kleine Auswahl an{" "}
-        <span className="text-teal-400">aktuellen Projekten</span>
-      </h1>
+    <div className="mb-20">
       <div className="grid-cols-1 md:grid-cols-2 flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {projects.map((item) => (
           <Link
@@ -64,4 +60,4 @@ const RecentProjects = () => {
   );
 };
 
-export default RecentProjects;
+export default RecentProjects2;

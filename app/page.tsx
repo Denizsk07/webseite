@@ -4,10 +4,15 @@ import RecentProjects from "./components/Projects";
 import Banner from "./components/Banner";
 import Footer from "./components/Footer";
 import ContactSection from "./components/Contact";
+import RecentProjects2 from "./components/Projects2";
+
+import { navItems } from "./data";
+import { FloatingNav } from "./ui/Navigation";
 
 export default function Home() {
   return (
     <>
+    <FloatingNav navItems={navItems} />
       <div className="relative overflow-hidden h-full flex flex-col items-center justify-center min-h-screen w-full p-4 space-y-10">
         <Spotlight
           className="absolute -top-40 -left-10 md:-left-32 md:-top-20 h-screen w-screen"
@@ -58,6 +63,7 @@ export default function Home() {
 
       <section id="projects">
         <RecentProjects />
+        <RecentProjects2 />
       </section>
 
       <Banner />

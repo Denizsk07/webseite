@@ -16,7 +16,7 @@ const ContactSection = () => {
           Sie mich!
         </p>
         <a
-          href="mailto:deniz.kaya@example.com"
+          href="mailto:deniz20070206@gmail.com"
           className="mt-6 inline-block px-8 py-3 bg-teal-500 text-black font-bold rounded-full hover:bg-teal-600 transition-all duration-300 shadow-lg transform hover:scale-105"
         >
           E-Mail senden

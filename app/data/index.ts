@@ -3,32 +3,22 @@ export const projects = [
       id: 1,
       title: "Auto Video/Edit",
       des: "Mercedes Lorinser W124 Video | Musik: Gangster Paradise | Format 16:9",
-      img: "",
+      img: "a.png",
       iconLists: [""],
-      link: "/ui.earth.com",
+      link: "https://www.youtube.com/watch?v=-fDn096HJCA",
     },
     {
       id: 2,
       title: "Sylvester Essen",
       des: "Video für TikTok | Musik: Monaco von Bad Bunny | Format 9:16",
-      img: "",
+      img: "a.png",
       iconLists: [""],
-      link: "/ui.yoom.com",
+      link: "https://www.youtube.com/watch?v=lfEMQEP54SY",
     },
-    {
-      id: 3,
-      title: "School Project",
-      des: "Tuyo Narcos Theme | Waffe(l)deal | Ratio 16:9",
-      img: "",
-      iconLists: [""],
-      link: "/ui.aiimg.com",
-    },
-    {
-      id: 4,
-      title: "School Project",
-      des: "Clean your Car | Musik: The Way I Are Timbaland | 16:9",
-      img: "",
-      iconLists: [""],
-      link: "/ui.apple.com",
-    },
+  ];
+
+  export const navItems = [
+    { name: "About", link: "#about" },
+    { name: "Projects", link: "#projects" },
+    { name: "Testimonials", link: "#testimonials" },
   ];
