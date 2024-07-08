@@ -1,19 +1,35 @@
+// pages/api/categories/index.js
 import { NextResponse } from 'next/server';
-import { openDB } from '../../lib/database';
+import { connectToDatabase } from '../../lib/database';
+import Category from '../../models/Category';
 
 export async function GET() {
-  const db = await openDB();
-  const categories = await db.all('SELECT name FROM categories');
-  return NextResponse.json(categories);
+  await connectToDatabase();
+
+  try {
+    const categories = await Category.find({}, { name: 1 }); // Nur den Namen der Kategorien abfragen
+    return NextResponse.json(categories);
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return NextResponse.json({ error: 'Failed to fetch categories' }, { status: 500 });
+  }
 }
 
-export async function POST(request: Request) {
+export async function POST(request) {
   const { category } = await request.json();
+
   if (!category) {
     return NextResponse.json({ error: 'Category name is required.' }, { status: 400 });
   }
 
-  const db = await openDB();
-  await db.run('INSERT INTO categories (name) VALUES (?)', [category]);
-  return NextResponse.json({ message: 'Category created successfully.' });
+  await connectToDatabase();
+
+  try {
+    const newCategory = new Category({ name: category });
+    await newCategory.save();
+    return NextResponse.json({ message: 'Category created successfully.' });
+  } catch (error) {
+    console.error('Error creating category:', error);
+    return NextResponse.json({ error: 'Failed to create category' }, { status: 500 });
+  }
 }

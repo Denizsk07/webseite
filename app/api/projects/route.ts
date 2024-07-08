@@ -1,17 +1,22 @@
+// app/api/projects/route.ts
 import { NextResponse } from 'next/server';
-import { openDB } from '../../lib/database';
+import { connectToDatabase } from '../../lib/database';
+import Project from '../../models/Project';
 
-export async function GET(request: Request) {
-  const url = new URL(request.url);
-  const limit = url.searchParams.get('limit');
-  
-  const db = await openDB();
-  const query = limit ? `SELECT * FROM projects LIMIT ${limit}` : 'SELECT * FROM projects';
-  const projects = await db.all(query);
-  
-  return NextResponse.json(projects);
+// GET-Methode
+export async function GET() {
+  await connectToDatabase();
+
+  try {
+    const projects = await Project.find({});
+    return NextResponse.json(projects);
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+    return NextResponse.json({ error: 'Failed to fetch projects' }, { status: 500 });
+  }
 }
 
+// POST-Methode
 export async function POST(request: Request) {
   const { title, description, image, youtube_link, category } = await request.json();
 
@@ -19,11 +24,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
   }
 
-  const db = await openDB();
-  const result = await db.run(
-    'INSERT INTO projects (title, description, image, youtube_link, category) VALUES (?, ?, ?, ?, ?)',
-    [title, description, image, youtube_link, category]
-  );
+  await connectToDatabase();
 
-  return NextResponse.json({ message: 'Project uploaded successfully.', project: { id: result.lastID, title, description, image, youtube_link, category } });
+  try {
+    const newProject = new Project({ title, description, image, youtube_link, category });
+    await newProject.save();
+    return NextResponse.json({ message: 'Project created successfully.' });
+  } catch (error) {
+    console.error('Error creating project:', error);
+    return NextResponse.json({ error: 'Failed to create project' }, { status: 500 });
+  }
 }

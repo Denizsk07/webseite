@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth/next';
 import { authOptions } from '../../auth/[...nextauth]/authOptions';
-import { openDB } from '../../../lib/database';
+import { connectToDatabase } from '@/app/lib/database';
+import Project from '@/app/models/Project';
 
 export async function DELETE(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -11,7 +12,8 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
-  const db = await openDB();
+  await connectToDatabase();
+
   const { pathname } = new URL(req.url);
   const id = pathname.split('/').pop();  // Get the last part of the URL
   const projectId = Array.isArray(id) ? id[0] : id;
@@ -22,18 +24,18 @@ export async function DELETE(req: NextRequest) {
   }
 
   try {
-    const project = await db.get('SELECT * FROM projects WHERE id = ?', projectId);
-    console.log(`Project found: ${JSON.stringify(project)}`);
+    const project = await Project.findById(projectId);
+    console.log(`Project found: ${project}`);
 
     if (!project) {
       console.log('Project not found.');
       return NextResponse.json({ message: 'Project not found' }, { status: 404 });
     }
 
-    const result = await db.run('DELETE FROM projects WHERE id = ?', projectId);
-    console.log(`Deletion result: ${JSON.stringify(result)}`);
+    const result = await Project.deleteOne({ _id: projectId });
+    console.log(`Deletion result: ${result}`);
 
-    if (result.changes === 0) {
+    if (result.deletedCount === 0) {
       console.log('Failed to delete project.');
       return NextResponse.json({ message: 'Failed to delete project' }, { status: 500 });
     }

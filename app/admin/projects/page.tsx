@@ -1,3 +1,4 @@
+// components/Projects.js
 'use client';
 
 import { useSession } from 'next-auth/react';
@@ -5,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 type Project = {
-  id: number;
+  _id: string;
   title: string;
   description: string;
   image: string;
@@ -25,14 +26,14 @@ export default function Projects() {
     }
   }, [status]);
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: string) => {
     console.log(`Attempting to delete project with ID: ${id}`);
     const res = await fetch(`/api/projects/${id}`, {
       method: 'DELETE',
     });
     console.log(`Delete response status: ${res.status}`);
     if (res.ok) {
-      setProjects(projects.filter((project) => project.id !== id));
+      setProjects(projects.filter((project) => project._id !== id));
     } else {
       try {
         const errorData = await res.json();
@@ -57,7 +58,7 @@ export default function Projects() {
       <h1 className="text-3xl font-bold text-center text-white mb-6">Projects</h1>
       <ul className="space-y-4">
         {projects.map((project) => (
-          <li key={project.id} className="bg-white p-6 rounded-lg shadow-md">
+          <li key={project._id} className="bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-xl font-bold">{project.title}</h3>
             <p className="text-white">{project.description}</p>
             {project.image && <img src={project.image} alt={project.title} className="mt-2 rounded-md w-full max-w-xs mx-auto" />}
@@ -72,7 +73,7 @@ export default function Projects() {
               </a>
             }
             <button 
-              onClick={() => handleDelete(project.id)}
+              onClick={() => handleDelete(project._id)}
               className="mt-2 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
             >
               Delete Project

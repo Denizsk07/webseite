@@ -1,10 +1,25 @@
-import sqlite3 from 'sqlite3';
-import { open, Database } from 'sqlite';
-import path from 'path';
+import mongoose from 'mongoose';
 
-export async function openDB(): Promise<Database> {
-  return open({
-    filename: path.resolve(process.cwd(), 'app/lib/database.sqlite'),
-    driver: sqlite3.Database
-  });
+let isConnected = false;
+
+export async function connectToDatabase() {
+  if (isConnected) {
+    console.log('Already connected to MongoDB');
+    return;
+  }
+
+  try {
+    const uri = 'mongodb+srv://myapp:laszlo761938@cluster0.mz1jkvx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+    const options = {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    };
+
+    await mongoose.connect(uri, options);
+    isConnected = true;
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    throw error;
+  }
 }

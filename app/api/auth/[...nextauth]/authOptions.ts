@@ -1,6 +1,6 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { openDB } from '../../../lib/database';
+import { openDB } from '../../../lib/authDb';
 
 export const authOptions: NextAuthOptions = {
   providers: [
