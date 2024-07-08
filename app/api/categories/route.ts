@@ -1,7 +1,6 @@
-// pages/api/categories/index.js
-import { NextResponse } from 'next/server';
-import { connectToDatabase } from '../../lib/database';
-import Category from '../../models/Category';
+import { NextRequest, NextResponse } from 'next/server';
+import { connectToDatabase } from '@/app/lib/database';
+import Category from '@/app/models/Category';
 
 export async function GET() {
   await connectToDatabase();
@@ -15,7 +14,7 @@ export async function GET() {
   }
 }
 
-export async function POST(request) {
+export async function POST(request: NextRequest) {
   const { category } = await request.json();
 
   if (!category) {
