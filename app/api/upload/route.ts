@@ -1,15 +1,7 @@
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../auth/[...nextauth]/authOptions';
-import { openDB } from '../../lib/database';
+import { openDB } from '../../../lib/database';
 
 export async function POST(req: Request) {
-  const session = await getServerSession({ req, res: NextResponse }, authOptions);
-
-  if (!session) {
-    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
-  }
-
   const db = await openDB();
   const body = await req.json();
   const { title, description, image, youtube_link, category } = body;
