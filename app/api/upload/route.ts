@@ -19,12 +19,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(400).json({ error: 'All fields are required.' });
     }
 
-    const result = await db.run(
-      'INSERT INTO projects (title, description, image, youtube_link, category) VALUES (?, ?, ?, ?, ?)',
-      [title, description, image, youtube_link, category]
-    );
+    try {
+      const result = await db.run(
+        'INSERT INTO projects (title, description, image, youtube_link, category) VALUES (?, ?, ?, ?, ?)',
+        [title, description, image, youtube_link, category]
+      );
 
-    return res.status(201).json({ message: 'Project uploaded successfully.', project: { id: result.lastID, title, description, image, youtube_link, category } });
+      return res.status(201).json({
+        message: 'Project uploaded successfully.',
+        project: {
+          id: result.lastID,
+          title,
+          description,
+          image,
+          youtube_link,
+          category,
+        },
+      });
+    } catch (error) {
+      console.error('Database error:', error);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
   } else {
     return res.status(405).json({ message: 'Method not allowed' });
   }
