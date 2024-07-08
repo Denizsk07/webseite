@@ -1,37 +1,47 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { getServerSession } from 'next-auth/next';
+import { NextApiRequest } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
 import { authOptions } from '../../auth/[...nextauth]/authOptions';
 import { openDB } from '../../../lib/database';
 
-export async function DELETE(req: NextApiRequest, res: NextApiResponse) {
-  const session = await getServerSession(req, res, authOptions);
+export async function DELETE(req: NextApiRequest) {
+  const session = await getServerSession(authOptions);
 
   if (!session) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    console.log('Unauthorized access attempt.');
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
   const db = await openDB();
-  const { id } = req.query;
+  const { pathname } = new URL(req.url);
+  const id = pathname.split('/').pop();  // Get the last part of the URL
+  const projectId = Array.isArray(id) ? id[0] : id;
 
-  if (typeof id !== 'string') {
-    return res.status(400).json({ message: 'Invalid project ID' });
+  console.log(`Received request to delete project with ID: ${projectId}`);
+  if (!projectId) {
+    return NextResponse.json({ message: 'Project ID is required' }, { status: 400 });
   }
 
   try {
-    const project = await db.get('SELECT * FROM projects WHERE id = ?', id);
+    const project = await db.get('SELECT * FROM projects WHERE id = ?', projectId);
+    console.log(`Project found: ${JSON.stringify(project)}`);
 
     if (!project) {
-      return res.status(404).json({ message: 'Project not found' });
+      console.log('Project not found.');
+      return NextResponse.json({ message: 'Project not found' }, { status: 404 });
     }
 
-    const result = await db.run('DELETE FROM projects WHERE id = ?', id);
+    const result = await db.run('DELETE FROM projects WHERE id = ?', projectId);
+    console.log(`Deletion result: ${JSON.stringify(result)}`);
 
     if (result.changes === 0) {
-      return res.status(500).json({ message: 'Failed to delete project' });
+      console.log('Failed to delete project.');
+      return NextResponse.json({ message: 'Failed to delete project' }, { status: 500 });
     }
 
-    res.status(200).json({ message: 'Project deleted' });
+    return NextResponse.json({ message: 'Project deleted' }, { status: 200 });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    console.error('Database error:', error);
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }
