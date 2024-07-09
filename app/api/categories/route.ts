@@ -6,7 +6,7 @@ export async function GET() {
   await connectToDatabase();
 
   try {
-    const categories = await Category.find({}, { name: 1 }); // Nur den Namen der Kategorien abfragen
+    const categories = await Category.find({}, { name: 1 });
     return NextResponse.json(categories);
   } catch (error) {
     console.error('Error fetching categories:', error);
