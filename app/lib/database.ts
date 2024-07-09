@@ -1,7 +1,4 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 let isConnected = false;
 
@@ -19,7 +16,7 @@ export async function connectToDatabase() {
     }
 
     await mongoose.connect(uri);
-
+    
     isConnected = true;
     console.log('Connected to MongoDB');
   } catch (error) {
