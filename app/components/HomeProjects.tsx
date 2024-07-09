@@ -9,15 +9,20 @@ type Project = {
   description: string;
   image: string;
   youtube_link: string;
+  createdAt: string; // Hinzugefügt, um das Erstellungsdatum zu speichern
 };
 
 export default function HomeProjects() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    fetch('/api/projects?limit=4')  // Fetch only 2 projects for the homepage
+    fetch('/api/projects?limit=4')  // Fetch only 4 projects for the homepage
       .then((res) => res.json())
-      .then((data) => setProjects(data));
+      .then((data) => {
+        // Projekte nach Erstellungsdatum sortieren
+        const sortedProjects = data.sort((a: Project, b: Project) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        setProjects(sortedProjects);
+      });
   }, []);
 
   return (
