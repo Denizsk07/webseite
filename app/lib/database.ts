@@ -9,7 +9,7 @@ export async function connectToDatabase() {
   }
 
   try {
-    const uri = 'mongodb+srv://myapp:laszlo761938@cluster0.mz1jkvx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+    const uri = 'mongodb+srv://instantfameserver:OB9EzPjPWgWSD60t@denox-1.ourulon.mongodb.net/?retryWrites=true&w=majority&appName=denox-1';
 
     await mongoose.connect(uri);
     
