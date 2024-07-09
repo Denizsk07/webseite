@@ -4,7 +4,7 @@ const Banner = () => {
   return (
     <section id="contact" className="py-20 p-12 mt-20 mb-20 text-center">
       <h2 className="text-4xl md:text-5xl font-bold text-white">
-       Wenn sie Interesse haben mich zu kontaktieren machen sie es durch den unteren Knopf
+       Wenn sie <span className="text-teal-400">Interesse</span> haben mich zu kontaktieren machen sie es durch den unteren Knopf
       </h2>
       <p className="text-neutral-400 mt-4 text-lg md:text-xl">
         Bei Interesse unten auf Kontakt aufnehmen drücken!
