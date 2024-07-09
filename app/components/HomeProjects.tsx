@@ -15,14 +15,14 @@ export default function HomeProjects() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    fetch('/api/projects?limit=2')  // Fetch only 2 projects for the homepage
+    fetch('/api/projects?limit=4')  // Fetch only 2 projects for the homepage
       .then((res) => res.json())
       .then((data) => setProjects(data));
   }, []);
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-3xl font-bold text-center text-white mb-6">Recent Projects</h2>
+      <h2 className="text-3xl font-bold text-center text-white mb-6">Meine Projekte</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projects.map((project) => (
           <div key={project._id} className="bg-gray-700 bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 rounded-lg shadow-lg flex flex-col justify-between">
