@@ -32,7 +32,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-7xl font-bold text-white animate-fade-in leading-tight">
             Mediengestalter{" "}
             <span className="text-teal-400">Bild</span>{" "}
-            <span className="text-white">& Ton</span>
+            <span className="text-white">& Ton</span>{" "}
           </h2>
           <p className="text-neutral-300 max-w-xl mx-auto my-6 text-lg md:text-xl animate-fade-in">
             Hallo! Ich bin Deniz Kaya, ein leidenschaftlicher Mediengestalter im
