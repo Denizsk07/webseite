@@ -27,7 +27,7 @@ export default function Home() {
         <Spotlight className="absolute left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
         <div className="text-center relative z-10">
           <h1 className="text-sm uppercase tracking-widest text-teal-400 mb-4 animate-fade-in">
-            ##Mediengestaltung in Bild und Ton##
+           
           </h1>
           <h2 className="text-4xl md:text-7xl font-bold text-white animate-fade-in leading-tight">
             Mediengestalter{" "}
