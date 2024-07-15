@@ -24,9 +24,9 @@ export default function Home() {
           className="absolute top-10 right-0 h-[80vh] w-[50vw]"
           fill="gray"
         />
-        <Spotlight className="absolute left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
+        <Spotlight className="absolute left-80 top-28 h-[80vh] w-[50vw]" fill="blue" /> text-sm uppercase tracking-widest text-white-400 animate-fade-in
         <div className="text-center relative z-10">
-          <h1 className="text-sm uppercase tracking-widest text-white-400 animate-fade-in">
+          <h1 className="text-4xl md:text-7xl font-bold text-white animate-fade-in leading-tight">
            -München-
           </h1>
           <h2 className="text-4xl md:text-7xl font-bold text-white animate-fade-in leading-tight">
