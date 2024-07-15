@@ -27,12 +27,12 @@ export default function Home() {
         <Spotlight className="absolute left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
         <div className="text-center relative z-10">
           <h1 className="text-sm uppercase tracking-widest text-teal-400 mb-4 animate-fade-in">
-            Mediengestaltung in Bild und Ton
+            ##Mediengestaltung in Bild und Ton##
           </h1>
           <h2 className="text-4xl md:text-7xl font-bold text-white animate-fade-in leading-tight">
-            Verwandeln Sie Konzepte in{" "}
-            <span className="text-teal-400">nahtlose</span>{" "}
-            <span className="text-white">Nutzererlebnisse</span>
+            Mediengestalter{" "}
+            <span className="text-teal-400">Bild</span>{" "}
+            <span className="text-white">& Ton</span>
           </h2>
           <p className="text-neutral-300 max-w-xl mx-auto my-6 text-lg md:text-xl animate-fade-in">
             Hallo! Ich bin Deniz Kaya, ein leidenschaftlicher Mediengestalter im
