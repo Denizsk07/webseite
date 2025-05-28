@@ -30,9 +30,9 @@ export default function HomeProjects() {
       <h2 className="text-3xl font-bold text-center text-foreground mb-6">Meine Projekte</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projects.map((project) => (
-          <div key={project._id} className="bg-surface bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-lg shadow-lg flex flex-col justify-between transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-primary/20">
+          <div key={project._id} className="bg-surface bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-lg flex flex-col justify-between shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-[1.03] shadow-black/30 hover:shadow-black/40">
             <div>
-              <h3 className="text-lg font-bold mb-2 text-foreground">{project.title}</h3>
+              <h3 className="font-heading text-lg font-bold mb-2 text-foreground">{project.title}</h3>
               <p className="text-foregroundMuted mb-4">{project.description}</p>
               {project.image && <img src={project.image} alt={project.title} className="aspect-video w-full object-cover rounded-md mb-4" />}
             </div>
@@ -42,7 +42,7 @@ export default function HomeProjects() {
                   href={project.youtube_link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-block mt-4 px-4 py-2 bg-primary text-white text-sm font-medium rounded-md hover:bg-purple-700 transition-colors duration-200"
+                  className="inline-block mt-4 px-4 py-2 bg-primary text-white text-sm font-medium rounded-md hover:bg-teal-700 transition-colors duration-200"
                 >
                   Zum Projekt
                 </Link>
@@ -53,7 +53,7 @@ export default function HomeProjects() {
       </div>
       <div className="text-center mt-6">
         <Link href="/projects"
-          className="px-4 py-2 bg-primary text-white font-bold rounded-full hover:bg-purple-700 transition-all duration-300">
+          className="px-4 py-2 bg-primary text-white font-bold rounded-full hover:bg-teal-700 transition-all duration-300">
             Mehr Projekte
         </Link>
       </div>

@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <>
     <FloatingNav navItems={navItems} />
-      <div className="relative overflow-hidden h-full flex flex-col items-center justify-center min-h-screen w-full p-4 space-y-8">
+      <div className="relative overflow-hidden h-full flex flex-col items-center justify-center min-h-screen w-full flex items-center"> {/* Removed p-4, space-y-8, added flex items-center */}
         {/* Background Visual Placeholder: User can replace this with an img, video, or a component for a dynamic background */}
         <div className="absolute inset-0 z-0 opacity-20">
           {/* Example: <img src="/path-to-your-hero-image.jpg" alt="Hero Background" className="w-full h-full object-cover" /> */}
@@ -40,21 +40,21 @@ export default function Home() {
           fill="neutral-700"
         />
         <Spotlight className="absolute left-80 top-28 h-[80vh] w-[50vw] z-[1]" fill="accent" />
-        <div className="text-center relative z-10">
-          <h1 className="text-xl md:text-2xl font-normal text-foregroundMuted animate-fade-in leading-tight">
+        <div className="relative z-10 text-left w-full lg:w-3/5 xl:w-1/2 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-10"> {/* Removed text-center, added text-left, width and padding classes */}
+          <h1 className="text-base md:text-lg font-heading font-normal text-accent animate-fade-in leading-tight mb-2 md:mb-3"> {/* Updated h1 classes */}
            -München-
           </h1>
-          <h2 className="text-4xl md:text-7xl font-bold text-foreground animate-fade-in leading-tight">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-foreground animate-fade-in leading-tight mb-4 md:mb-6"> {/* Updated h2 classes */}
             Mediengestalter{" "}
             <span className="text-primary">Bild</span>{" "}
             <span className="text-primary">& Ton</span>{" "}
           </h2>
-          <p className="text-foregroundMuted max-w-xl mx-auto my-6 text-lg md:text-xl animate-fade-in">
+          <p className="text-foregroundMuted max-w-xl text-lg md:text-xl animate-fade-in mb-6 md:mb-8"> {/* Updated p classes */}
             Hallo! Ich bin Deniz Kaya, ein leidenschaftlicher Mediengestalter im
             Bereich Bild & Ton.
           </p>
           <Link href="#projects">
-          <button className="mt-6 px-10 py-4 bg-primary text-white font-bold rounded-full hover:bg-purple-700 transition-all duration-300 animate-fade-in">
+          <button className="px-10 py-4 bg-primary text-white font-bold rounded-full hover:bg-teal-700 transition-all duration-300 animate-fade-in"> {/* Removed mt-6 */}
             Meine Projekte ansehen
           </button>
           </Link>
@@ -63,7 +63,7 @@ export default function Home() {
 
       <section
   id="about"
-  className="max-w-4xl mx-auto text-center bg-gradient-to-r from-surface via-background to-background p-8 rounded-xl shadow-2xl my-20 backdrop-filter backdrop-blur-lg bg-opacity-30 border border-neutral-700 animate-fadeIn"
+  className="max-w-4xl mx-auto my-20 p-12 md:p-16 rounded-xl animate-fadeIn text-left bg-surface"
 >
   <h2 className="text-4xl md:text-5xl font-heading font-bold mb-8 text-primary">
     Über mich

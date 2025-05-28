@@ -61,13 +61,13 @@ export const FloatingNav = ({
           // change rounded-full to rounded-lg
           // remove dark:border-white/[0.2] dark:bg-black bg-white border-transparent
           // change pr-2 pl-8 py-2 to px-10 py-5
-          "flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-5 rounded-lg border border-neutral-700 items-center justify-center space-x-4 bg-surface shadow-xl shadow-black/25",
+          "flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-5 rounded-xl border border-neutral-700 items-center justify-center space-x-4 bg-surface shadow-xl shadow-black/25",
           className
         )}
         style={{
           backdropFilter: "blur(16px) saturate(180%)",
           // backgroundColor: "rgba(17, 25, 40, 0.75)", // Replaced with bg-surface
-          borderRadius: "12px",
+          // borderRadius: "12px", // Removed, using rounded-xl from Tailwind
           // border: "1px solid rgba(255, 255, 255, 0.125)", // Replaced with border-neutral-700
         }}
       >

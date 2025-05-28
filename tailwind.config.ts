@@ -25,9 +25,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: colors.purple[600],
+        primary: colors.teal[600],
         secondary: colors.slate[700],
-        accent: colors.purple[400],
+        accent: colors.teal[400],
         background: colors.neutral[900],
         surface: colors.neutral[800],
         foreground: colors.neutral[100],
