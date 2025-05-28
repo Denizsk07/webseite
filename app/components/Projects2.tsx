@@ -19,8 +19,7 @@ const RecentProjects2 = () => {
               <PinContainer title={item.title}>
                 <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
                   <div
-                    className="relative w-full h-full overflow-hidden lg:rounded-3xl"
-                    style={{ backgroundColor: "#13162D" }}
+                    className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-surface"
                   >
                     <img src="/bg.png" alt="bgimg" />
                   </div>
@@ -31,14 +30,13 @@ const RecentProjects2 = () => {
                   />
                 </div>
 
-                <h1 className="font-bold lg:text-2xl md:text-xl text-white line-clamp-1">
+                <h1 className="font-bold lg:text-2xl md:text-xl text-foreground line-clamp-1">
                   {item.title}
                 </h1>
 
                 <p
-                  className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
+                  className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 text-foregroundMuted"
                   style={{
-                    color: "#BEC1DD",
                     margin: "1vh 0",
                   }}
                 >
@@ -46,10 +44,10 @@ const RecentProjects2 = () => {
                 </p>
 
                 <div className="flex justify-center items-center mt-7 mb-3">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-white">
+                  <p className="flex lg:text-xl md:text-xs text-sm text-foreground">
                     Zum Projekt
                   </p>
-                  <FaLocationArrow className="ml-3" color="#ffff" />
+                  <FaLocationArrow className="ml-3 text-accent" />
                 </div>
               </PinContainer>
             </div>

@@ -24,6 +24,15 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      colors: {
+        primary: colors.purple[600],
+        secondary: colors.slate[700],
+        accent: colors.purple[400],
+        background: colors.neutral[900],
+        surface: colors.neutral[800],
+        foreground: colors.neutral[100],
+        foregroundMuted: colors.neutral[400],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
